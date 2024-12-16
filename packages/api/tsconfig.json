@@ -12,6 +12,9 @@
         "@/*": ["src/*"]
       }
     },
+    "types": [
+        "bun-types" // add Bun global
+      ],
     "include": ["src"],
     "exclude": ["test", "dist"]
   }

@@ -2,16 +2,18 @@
     "name": "appsync-chatroom",
     "private": true,
     "workspaces": [
-      "packages/*"
+        "packages/*"
     ],
     "scripts": {
         "format": "prettier --write \"**/*.{ts,tsx,md}\""
-      },
-      "devDependencies": {
+    },
+    "devDependencies": {
         "prettier": "^3.2.5"
-      },
-      "engines": {
+    },
+    "engines": {
         "node": ">=18"
-      }
-  }
-  
+    },
+    "dependencies": {
+        "bcrypt": "^5.1.1"
+    }
+}

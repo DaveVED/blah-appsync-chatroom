@@ -16,7 +16,9 @@ import {
           <SidebarGroup />
         </SidebarContent>
         <SidebarFooter className="p-4">
-          <LoginForm />
+        <div className="mt-auto p-4">
+        <LoginForm isSidebar={true} />
+      </div>
         </SidebarFooter>
       </Sidebar>
     )

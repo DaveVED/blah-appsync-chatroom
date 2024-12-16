@@ -12,9 +12,11 @@ import { HomeComponent } from "@/routes/home";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "./components/app-sidebar";
 import { LoginForm } from "./components/login-form";
+import { AuthProvider } from "./components/auth-provider";
 
 const rootRoute = createRootRoute({
   component: () => (
+    <AuthProvider>
     <SidebarProvider>
       <div className="flex h-screen w-full">
         <AppSidebar />
@@ -32,6 +34,7 @@ const rootRoute = createRootRoute({
         </div>
       </div>
     </SidebarProvider>
+    </AuthProvider>
   ),
 });
 

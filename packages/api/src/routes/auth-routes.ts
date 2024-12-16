@@ -5,7 +5,7 @@ import { Router } from "express";
   
   const authPath = "/v1/auth";
   
-  router.get(`${authPath}/login`, login);
+  router.post(`${authPath}/login`, login);
   router.post(`${authPath}/register`, register);
   router.get(`${authPath}/me`, me);
 

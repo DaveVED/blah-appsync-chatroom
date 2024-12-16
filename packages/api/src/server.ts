@@ -13,6 +13,13 @@ export const createServer = (): Express => {
     .use(cors())
     .use(authRoutes)
     .use(healthRoutes);
-
+    app.use(
+      cors({
+        origin: 'http://localhost:5173',
+        methods: ['POST', 'GET', 'PUT', 'DELETE'],
+        allowedHeaders: ['Content-Type', 'Authorization'],
+      })
+    );
+    
   return app;
 };
