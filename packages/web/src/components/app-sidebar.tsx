@@ -5,7 +5,7 @@ import {
     SidebarGroup,
     SidebarHeader,
   } from "@/components/ui/sidebar"
-  import { Button } from "@/components/ui/button"
+  import { LoginForm } from "./login-form"
   
   export function AppSidebar() {
     return (
@@ -16,12 +16,7 @@ import {
           <SidebarGroup />
         </SidebarContent>
         <SidebarFooter className="p-4">
-          <Button 
-            variant="outline" 
-            className="w-full transition-colors hover:bg-primary hover:text-primary-foreground"
-          >
-            Login
-          </Button>
+          <LoginForm />
         </SidebarFooter>
       </Sidebar>
     )

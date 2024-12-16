@@ -11,7 +11,7 @@ import {
 import { HomeComponent } from "@/routes/home";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "./components/app-sidebar";
-import { Button } from "@/components/ui/button";
+import { LoginForm } from "./components/login-form";
 
 const rootRoute = createRootRoute({
   component: () => (
@@ -22,11 +22,9 @@ const rootRoute = createRootRoute({
           <header className="h-16 bg-white border-b border-gray-200 flex items-center px-4">
             <SidebarTrigger className="mr-4" />
             <div className="flex-1 flex justify-center">
-              <h1 className="text-lg font-semibold text-gray-800">chat.davedennis.dev</h1>
+              <h1 className="text-xl font-semibold text-gray-800">chat.davedennis.dev</h1>
             </div>
-            <Button variant="outline" className="transition-colors hover:bg-primary hover:text-primary-foreground">
-              Login
-            </Button>
+            <LoginForm />
           </header>
           <main className="flex-1 overflow-hidden w-full">
             <Outlet />
