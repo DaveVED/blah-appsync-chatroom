@@ -1,0 +1,16 @@
+{
+  "name": "appsync-chatroom-ws",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/ws": "^8.5.13"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "aws-amplify": "^6.10.3",
+    "ws": "^8.18.0"
+  }
+}

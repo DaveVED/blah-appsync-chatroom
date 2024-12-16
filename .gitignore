@@ -1,0 +1,30 @@
+
+node_modules
+.turbo
+*.log
+.next
+dist
+dist-ssr
+*.local
+.env
+.cache
+server/dist
+public/dist
+.turbo
+.venv
+.vscode
+__pycache__
+logs/
+*.log
+.vscode
+
+# CDK
+*.js
+!jest.config.js
+*.d.ts
+
+# CDK asset staging directory
+.cdk.staging
+cdk.out
+!postcss.config.js
+!eslint.config.js
