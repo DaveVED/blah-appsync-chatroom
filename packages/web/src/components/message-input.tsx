@@ -1,14 +1,14 @@
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Textarea } from "@/components/ui/textarea"
-import { Send, Plus, Settings, Trash2 } from 'lucide-react'
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import { Send, Plus, Settings, Trash2 } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { User } from "./types"
+} from "@/components/ui/dropdown-menu";
+import { User } from "./types";
 
 interface MessageInputProps {
   currentUser: User;
@@ -17,20 +17,25 @@ interface MessageInputProps {
   onCleanupChat: () => void;
 }
 
-export const MessageInput: React.FC<MessageInputProps> = ({ currentUser, onSendMessage, onSettings, onCleanupChat }) => {
-  const [input, setInput] = useState("")
+export const MessageInput: React.FC<MessageInputProps> = ({
+  currentUser,
+  onSendMessage,
+  onSettings,
+  onCleanupChat,
+}) => {
+  const [input, setInput] = useState("");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setInput(e.target.value)
-  }
+    setInput(e.target.value);
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     if (input.trim()) {
-      onSendMessage(input.trim())
-      setInput("")
+      onSendMessage(input.trim());
+      setInput("");
     }
-  }
+  };
 
   return (
     <form onSubmit={handleSubmit} className="flex items-center space-x-2">
@@ -64,15 +69,14 @@ export const MessageInput: React.FC<MessageInputProps> = ({ currentUser, onSendM
           className="w-full min-h-[60px] p-3 rounded-md bg-gray-100 focus:ring-2 focus:ring-purple-600 focus:bg-white transition-all duration-300 text-gray-800 placeholder-gray-500 resize-none"
         />
       </div>
-      <Button 
-        type="submit" 
-        size="icon" 
+      <Button
+        type="submit"
+        size="icon"
         className="rounded-full w-10 h-10 bg-purple-600 hover:bg-purple-700 transition-colors duration-300 flex items-center justify-center flex-shrink-0"
       >
         <Send className="h-5 w-5 text-white" />
         <span className="sr-only">Send message</span>
       </Button>
     </form>
-  )
-}
-
+  );
+};

@@ -1,18 +1,26 @@
 import { sql } from "drizzle-orm";
-import { pgSchema, uuid, varchar, timestamp , text} from "drizzle-orm/pg-core";
+import { pgSchema, uuid, boolean, timestamp, text } from "drizzle-orm/pg-core";
 
-/**
- * Needs to be config driven eventually.... Ideall, we can set someting in the lambda.
- */
-export const mySchema = pgSchema("chat_dev");
-export const colors = mySchema.enum("colors", ["red", "green", "blue"]);
+export const chatSchema = pgSchema("chat_dev");
 
-export const users = mySchema.table("users", {
-  id: uuid("id").default(sql`gen_random_uuid()`).primaryKey(),
-  email: varchar({ length: 255 }).notNull().unique(),
-  hashed_password: text(),
-  createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
-  updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),  
+export const usersTable = chatSchema.table("users", {
+  id: uuid("id")
+    .default(sql`gen_random_uuid()`)
+    .primaryKey(),
+  email: text().notNull().unique(),
+  username: text().notNull().unique(),
+  hashedPassword: text("hashed_password").notNull().unique(),
+  termsAccepted: boolean("terms_accepted").notNull(),
+  active: boolean().notNull().default(true),
+  createdAt: timestamp("created_at", { withTimezone: true })
+    .defaultNow()
+    .notNull(),
+  createdBy: text("created_by").notNull().default("system"),
+  updatedAt: timestamp("updated_at", { withTimezone: true })
+    .defaultNow()
+    .notNull(),
+  updatedBy: text("updated_by").notNull().default("system"),
 });
 
-export type User = typeof users.$inferSelect;
+export type User = typeof usersTable.$inferSelect;
+export type NewUser = typeof usersTable.$inferInsert;

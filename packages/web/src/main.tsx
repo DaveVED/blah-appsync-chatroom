@@ -17,23 +17,15 @@ import { AuthProvider } from "./components/auth-provider";
 const rootRoute = createRootRoute({
   component: () => (
     <AuthProvider>
-    <SidebarProvider>
-      <div className="flex h-screen w-full">
+      <SidebarProvider>
         <AppSidebar />
         <div className="flex-1 flex flex-col">
-          <header className="h-16 bg-white border-b border-gray-200 flex items-center px-4">
-            <SidebarTrigger className="mr-4" />
-            <div className="flex-1 flex justify-center">
-              <h1 className="text-xl font-semibold text-gray-800">chat.davedennis.dev</h1>
-            </div>
-            <LoginForm />
-          </header>
           <main className="flex-1 overflow-hidden w-full">
+            <SidebarTrigger />
             <Outlet />
           </main>
         </div>
-      </div>
-    </SidebarProvider>
+      </SidebarProvider>
     </AuthProvider>
   ),
 });
@@ -63,4 +55,3 @@ if (!rootElement.innerHTML) {
     </StrictMode>,
   );
 }
-

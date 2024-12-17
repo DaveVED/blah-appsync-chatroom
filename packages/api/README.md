@@ -12,29 +12,38 @@ curl -X POST http://localhost:5001/v1/auth/register \
      -d '{"email": "test@example.com", "password": "123456"}'
 ```
 
-CREATE TABLE sessions (
-    id SERIAL PRIMARY KEY,
-    user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
-    jwt_token TEXT NOT NULL,
-    expires_at TIMESTAMP NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
-CREATE TABLE users (
-    id SERIAL PRIMARY KEY,
-    email VARCHAR(255) UNIQUE NOT NULL,
-    password_hash TEXT NOT NULL
-);
-
-CREATE SCHEMA chat_dev;
-
+```sql
+CREATE SCHEMA IF NOT EXISTS chat_dev;
 
 CREATE TABLE IF NOT EXISTS chat_dev.users (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    email VARCHAR(255) NOT NULL UNIQUE,
+    email TEXT NOT NULL UNIQUE,
+    username TEXT NOT NULL UNIQUE,
     hashed_password TEXT NOT NULL,
-    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP NOT NULL
+    terms_accepted BOOLEAN NOT NULL,
+    active BOOLEAN NOT NULL DEFAULT TRUE,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    created_by TEXT NOT NULL DEFAULT 'system',
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_by TEXT NOT NULL DEFAULT 'system'
 );
 
-PGSSLMODE=require  psql --dbname postgres --username admin --host kqabtwbmaz7seg5pbk2bj6vqt4.dsql.us-east-1.on.aws
+CREATE INDEX IF NOT EXISTS idx_users_email ON chat_dev.users (email);
+CREATE INDEX IF NOT EXISTS idx_users_username ON chat_dev.users (username);
+```
+
+---
+
+```sql
+CREATE TABLE sessions (
+id SERIAL PRIMARY KEY,
+user_id INT NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+jwt_token TEXT NOT NULL,
+expires_at TIMESTAMP NOT NULL,
+created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+PGSSLMODE=require psql --dbname postgres --username admin --host kqabtwbmaz7seg5pbk2bj6vqt4.dsql.us-east-1.on.aw
+```
+
+s

@@ -1,18 +1,49 @@
 import { getDbInstance } from "@/db/index.js";
-import { users } from "@/db/schema.js";
+import { NewUser, User, usersTable } from "@/db/schema.js";
+import { eq } from "drizzle-orm";
 
-export const getUsers = async () => {
-    const db = await getDbInstance();
-    const result = db.select().from(users);
-    return result;
-}
+export const getUsers = async (): Promise<User[]> => {
+  const db = await getDbInstance();
 
-export const createUser = async ({email, hashed_password}: {email: string, hashed_password: string}) => {
-    const db = await getDbInstance();
-    const record = await db.insert(users).values({
-        hashed_password,
-        email
-    }).returning().then(([record]) => record);
+  const result = await db.select().from(usersTable);
 
-    return record;
-}
+  return result;
+};
+
+export const getUserByEmail = async (
+  email: string,
+): Promise<User | undefined> => {
+  const db = await getDbInstance();
+  const record = await db
+    .select()
+    .from(usersTable)
+    .where(eq(usersTable.email, email));
+
+  return record[0] || undefined;
+};
+
+export const getUserByUsername = async (
+  username: string,
+): Promise<User | undefined> => {
+  const db = await getDbInstance();
+  const record = await db
+    .select()
+    .from(usersTable)
+    .where(eq(usersTable.username, username));
+
+  return record[0] || undefined;
+};
+
+export const createUser = async (user: NewUser): Promise<User> => {
+  const db = await getDbInstance();
+  const record = await db
+    .insert(usersTable)
+    .values({
+      ...user,
+      active: user.termsAccepted,
+    })
+    .returning()
+    .then(([record]) => record);
+
+  return record;
+};
