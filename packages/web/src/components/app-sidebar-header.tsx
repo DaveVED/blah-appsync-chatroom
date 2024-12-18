@@ -4,7 +4,6 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { GalleryVerticalEnd } from "lucide-react"
 
 export const  AppSidebarHeader: React.FC = ({ ...props }: React.ComponentProps<typeof SidebarHeader>) => {
   return (
