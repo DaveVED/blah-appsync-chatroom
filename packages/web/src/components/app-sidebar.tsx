@@ -1,64 +1,141 @@
+import * as React from "react"
+import {
+  AudioWaveform,
+  BookOpen,
+  Bot,
+  Command,
+  Frame,
+  GalleryVerticalEnd,
+  Map,
+  PieChart,
+  Settings2,
+  SquareTerminal,
+} from "lucide-react"
 
-import * as React from "react";
-
+import { SidebarBanner } from "./sidebar-banner"
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
+  SidebarHeader,
   SidebarRail,
-} from "@/components/ui/sidebar";
-import { AppSidebarSearchForm } from "./app-sidebar-search-form";
-import { AppSidebarHeader } from "@/components/app-sidebar-header";
-import { AppSidebarUserNav } from "@/components/app-sidebar-user-nav";
-import { DropdownMenuSeparator } from "@/components/ui/dropdown-menu";
-import { AppSidebarGroupChats } from "@/components/app-sidebar-group-chats";
-import { AppSidebarChats } from "@/components/app-sidebar-chats";
+} from "@/components/ui/sidebar"
+import { SidebarMain } from "./sidebar-main"
+import { SidebarProjects } from "./sidebar-projects"
+import { SidebarUser } from "./sidebar-user"
 
 const data = {
   user: {
-    name: "dave",
-    email: "me@davedennis.dev",
-    avatar: "/dave-cave-icon.png",
+    name: "shadcn",
+    email: "m@example.com",
+    avatar: "/avatars/shadcn.jpg",
   },
-  workspaces: [
+  navMain: [
     {
-      name: "Personal Life Management",
-      emoji: "🏠",
-      pages: [
+      title: "Playground",
+      url: "#",
+      icon: SquareTerminal,
+      isActive: true,
+      items: [
         {
-          name: "Daily Journal & Reflection",
+          title: "History",
           url: "#",
-          emoji: "📔",
         },
         {
-          name: "Health & Wellness Tracker",
+          title: "Starred",
           url: "#",
-          emoji: "🍏",
         },
         {
-          name: "Personal Growth & Learning Goals",
+          title: "Settings",
           url: "#",
-          emoji: "🌟",
         },
       ],
-
-    }
-  ],
-  groupChats: [
+    },
     {
-      name: "Global",
+      title: "Models",
       url: "#",
-      emoji: "🌐",
+      icon: Bot,
+      items: [
+        {
+          title: "Genesis",
+          url: "#",
+        },
+        {
+          title: "Explorer",
+          url: "#",
+        },
+        {
+          title: "Quantum",
+          url: "#",
+        },
+      ],
+    },
+    {
+      title: "Documentation",
+      url: "#",
+      icon: BookOpen,
+      items: [
+        {
+          title: "Introduction",
+          url: "#",
+        },
+        {
+          title: "Get Started",
+          url: "#",
+        },
+        {
+          title: "Tutorials",
+          url: "#",
+        },
+        {
+          title: "Changelog",
+          url: "#",
+        },
+      ],
+    },
+    {
+      title: "Settings",
+      url: "#",
+      icon: Settings2,
+      items: [
+        {
+          title: "General",
+          url: "#",
+        },
+        {
+          title: "Team",
+          url: "#",
+        },
+        {
+          title: "Billing",
+          url: "#",
+        },
+        {
+          title: "Limits",
+          url: "#",
+        },
+      ],
     },
   ],
-  personalChats: [
+  projects: [
     {
-      name: "Me",
+      name: "Design Engineering",
       url: "#",
-      emoji: "🌐",
-    }
-  ]
+      icon: Frame,
+    },
+    {
+      name: "Sales & Marketing",
+      url: "#",
+      icon: PieChart,
+    },
+    {
+      name: "Travel",
+      url: "#",
+      icon: Map,
+    },
+  ],
 }
+
 
 /**
  * The left hand side bar for the application. 
@@ -72,18 +149,19 @@ export const AppSidebar: React.FC = ({
 }: React.ComponentProps<typeof Sidebar>) => {
   return (
     <Sidebar collapsible="icon" {...props}>
-      <AppSidebarHeader />
-      <DropdownMenuSeparator />
-      <AppSidebarSearchForm />
+      <SidebarHeader>
+        <SidebarBanner />
+      </SidebarHeader>
       <SidebarContent>
-      <AppSidebarChats chats={data.personalChats} />
-          <AppSidebarGroupChats groupChats={data.groupChats} />
+        <SidebarMain items={data.navMain} />
+        <SidebarProjects projects={data.projects} />
       </SidebarContent>
       <SidebarFooter>
-        <AppSidebarUserNav user={data.user} />
+        <SidebarUser user={data.user} />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
+
   );
 };
 

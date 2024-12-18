@@ -13,14 +13,12 @@ export const  AppSidebarHeader: React.FC = ({ ...props }: React.ComponentProps<t
         <SidebarMenuButton size="lg" asChild>
           <a href="#">
 
-          <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground overflow-hidden">
-                <img
+              <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+              <img
                   src="/blah-icon.jpg"
                   alt="Blah Icon"
                   className="w-full h-full object-cover"
-                />
-              </div>
-
+                />              </div>
             <div className="flex flex-col gap-0.5 leading-none">
               <span className="font-semibold">Blah</span>
               <span className="">v0.0.0-beta.1</span>

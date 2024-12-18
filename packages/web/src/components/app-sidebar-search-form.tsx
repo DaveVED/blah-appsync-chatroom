@@ -1,5 +1,4 @@
-import { Search } from "lucide-react"
-
+import { Search } from 'lucide-react'
 import { Label } from "@/components/ui/label"
 import {
   SidebarGroup,
@@ -7,9 +6,9 @@ import {
   SidebarInput,
 } from "@/components/ui/sidebar"
 
-export const  AppSidebarSearchForm: React.FC = ({ ...props }: React.ComponentProps<"form">) => {
+export const AppSidebarSearchForm: React.FC = ({ ...props }: React.ComponentProps<"form">) => {
   return (
-    <form {...props}>
+    <form {...props} className="group-data-[collapsible=icon]:hidden">
       <SidebarGroup className="py-0">
         <SidebarGroupContent className="relative">
           <Label htmlFor="search" className="sr-only">
@@ -26,4 +25,3 @@ export const  AppSidebarSearchForm: React.FC = ({ ...props }: React.ComponentPro
     </form>
   )
 }
-
