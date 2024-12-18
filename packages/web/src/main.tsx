@@ -2,30 +2,22 @@ import { StrictMode } from "react";
 import "./index.css";
 import ReactDOM from "react-dom/client";
 import {
-  Outlet,
   RouterProvider,
   createRouter,
   createRoute,
   createRootRoute,
 } from "@tanstack/react-router";
 import { HomeComponent } from "@/routes/home";
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import { AppSidebar } from "./components/app-sidebar";
-import { LoginForm } from "./components/login-form";
+import { SidebarProvider } from "@/components/ui/sidebar";
 import { AuthProvider } from "./components/auth-provider";
+import { AppSidebar } from "@/components/app-sidebar";
 
 const rootRoute = createRootRoute({
   component: () => (
     <AuthProvider>
       <SidebarProvider>
         <AppSidebar />
-        <div className="flex-1 flex flex-col">
-          <main className="flex-1 overflow-hidden w-full">
-            <SidebarTrigger />
-            <Outlet />
-          </main>
-        </div>
-      </SidebarProvider>
+    </SidebarProvider>
     </AuthProvider>
   ),
 });
