@@ -1,11 +1,8 @@
 import * as React from "react"
 import {
-  AudioWaveform,
   BookOpen,
   Bot,
-  Command,
   Frame,
-  GalleryVerticalEnd,
   Map,
   PieChart,
   Settings2,
@@ -20,9 +17,8 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar"
-import { SidebarMain } from "./sidebar-main"
-import { SidebarProjects } from "./sidebar-projects"
 import { SidebarUser } from "./sidebar-user"
+import { SidebarChats } from "./sidebar-chats"
 
 const data = {
   user: {
@@ -153,8 +149,7 @@ export const AppSidebar: React.FC = ({
         <SidebarBanner />
       </SidebarHeader>
       <SidebarContent>
-        <SidebarMain items={data.navMain} />
-        <SidebarProjects projects={data.projects} />
+        <SidebarChats />
       </SidebarContent>
       <SidebarFooter>
         <SidebarUser user={data.user} />
