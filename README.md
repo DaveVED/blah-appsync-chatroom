@@ -3,6 +3,8 @@
     <img alt="Harpoon Man" height="200" src="packages/web/public/blah-icon-v2.jpg" />
   </a>
 
+  <br>
+  
   <a href="http://www.lua.org">
     <img alt="Lua" src="https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white" />
   </a>
@@ -10,7 +12,6 @@
     <img alt="Lua" src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white" />
   </a>
 </div>
-
 
 ---
 

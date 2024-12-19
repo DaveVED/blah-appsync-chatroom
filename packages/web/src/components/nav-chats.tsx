@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import { MessageCircle } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
@@ -18,7 +18,7 @@ export function NavChats({
 }: React.ComponentPropsWithoutRef<typeof SidebarGroup>) {
   return (
     <SidebarGroup {...props} className="group-data-[collapsible=icon]:hidden">
-    <SidebarGroupLabel>
+      <SidebarGroupLabel>
         <span className="text-sm font-semibold">Chats</span>
       </SidebarGroupLabel>
       <SidebarGroupAction title="Create Chat">
