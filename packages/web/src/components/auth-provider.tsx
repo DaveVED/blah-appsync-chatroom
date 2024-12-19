@@ -69,6 +69,7 @@ export const AuthProvider = React.forwardRef<
 
   const signout = async () => {
     setIsAuthenticated(false);
+    console.log(`signout successful`)
   };
 
   const contextValue = React.useMemo<AuthProviderContext>(
