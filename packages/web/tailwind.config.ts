@@ -3,7 +3,16 @@ import tailwindAnimate from "tailwindcss-animate";
 
 export default {
   darkMode: ["class"],
+  /**
+   * Most configure this here for Vite + Shadcn to work. Add the
+   * `index.html` and the `src` folder, to make sure nothing is missed.
+   */
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+
+  /**
+   * Below was `auto generated` by _shadcn_ framework, don't touch
+   * unless ou plant o change your theme.
+   */
   theme: {
     extend: {
       borderRadius: {
@@ -61,6 +70,8 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
           "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
+          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
+          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
         },
       },
     },

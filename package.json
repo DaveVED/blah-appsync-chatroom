@@ -1,19 +1,20 @@
 {
-    "name": "appsync-chatroom",
-    "private": true,
-    "workspaces": [
-        "packages/*"
-    ],
-    "scripts": {
-        "format": "prettier --write \"**/*.{ts,tsx,md}\""
-    },
-    "devDependencies": {
-        "prettier": "^3.2.5"
-    },
-    "engines": {
-        "node": ">=18"
-    },
-    "dependencies": {
-        "bcrypt": "^5.1.1"
-    }
+  "name": "appsync-chatroom",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+  },
+  "devDependencies": {
+    "@types/react-dom": "^19.0.2",
+    "prettier": "^3.2.5"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1"
+  }
 }

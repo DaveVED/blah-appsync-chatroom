@@ -1,162 +1,76 @@
-import * as React from "react"
 import {
-  BookOpen,
-  Bot,
-  Frame,
-  Map,
-  PieChart,
-  Settings2,
-  SquareTerminal,
-} from "lucide-react"
-
-import { SidebarBanner } from "./sidebar-banner"
-import {
-  Sidebar,
-  SidebarContent,
-  SidebarFooter,
-  SidebarHeader,
-  SidebarRail,
-} from "@/components/ui/sidebar"
-import { SidebarUser } from "./sidebar-user"
-import { SidebarChats } from "./sidebar-chats"
-
-const data = {
-  user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
-  navMain: [
-    {
-      title: "Playground",
-      url: "#",
-      icon: SquareTerminal,
-      isActive: true,
-      items: [
-        {
-          title: "History",
-          url: "#",
-        },
-        {
-          title: "Starred",
-          url: "#",
-        },
-        {
-          title: "Settings",
-          url: "#",
-        },
-      ],
+    Sidebar,
+    SidebarContent,
+    SidebarFooter,
+    SidebarHeader,
+    SidebarRail,
+  } from "@/components/ui/sidebar";
+  import { NavBanner } from "@/components/nav-banner";
+  import { Inbox, Bell } from 'lucide-react';
+  import { NavCommon } from "@/components/nav-common";
+  import { NavChats } from "@/components/nav-chats";
+  import { NavUser } from "@/components/nav-user";
+  import { Separator } from "@/components/ui/separator";
+import { NavLoggedOut } from "@/components/nav-logged-out";
+import { AuthLoginPopover } from "@/components/auth-login-popover";
+  
+  const navData = {
+    user: {
+      name: "dave",
+      email: "m@davedennis.com",
+      avatar: "/dave-cave-icon.png",
     },
-    {
-      title: "Models",
-      url: "#",
-      icon: Bot,
-      items: [
-        {
-          title: "Genesis",
-          url: "#",
-        },
-        {
-          title: "Explorer",
-          url: "#",
-        },
-        {
-          title: "Quantum",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Documentation",
-      url: "#",
-      icon: BookOpen,
-      items: [
-        {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Settings",
-      url: "#",
-      icon: Settings2,
-      items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Team",
-          url: "#",
-        },
-        {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
-        },
-      ],
-    },
-  ],
-  projects: [
-    {
-      name: "Design Engineering",
-      url: "#",
-      icon: Frame,
-    },
-    {
-      name: "Sales & Marketing",
-      url: "#",
-      icon: PieChart,
-    },
-    {
-      name: "Travel",
-      url: "#",
-      icon: Map,
-    },
-  ],
-}
-
-
-/**
- * The left hand side bar for the application. 
- * 
- * Documentaton used: https://ui.shadcn.com/blocks/sidebar.
- * @param param0 
- * @returns 
- */
-export const AppSidebar: React.FC = ({
-  ...props
-}: React.ComponentProps<typeof Sidebar>) => {
-  return (
-    <Sidebar collapsible="icon" {...props}>
-      <SidebarHeader>
-        <SidebarBanner />
-      </SidebarHeader>
-      <SidebarContent>
-        <SidebarChats />
-      </SidebarContent>
-      <SidebarFooter>
-        <SidebarUser user={data.user} />
-      </SidebarFooter>
-      <SidebarRail />
-    </Sidebar>
-
-  );
-};
-
+    navCore: [
+      {
+        title: "Inbox",
+        url: "#",
+        icon: Inbox,
+        badge: "3",
+      },
+      {
+        title: "Notifications",
+        url: "#",
+        icon: Bell,
+        badge: "5",
+      },
+    ],
+  };
+  
+  export const AppSidebar = ({
+    ...props
+  }: React.ComponentProps<typeof Sidebar>): JSX.Element => {
+    const loggedIn = false;
+  
+    return (
+      <Sidebar collapsible="icon" {...props}>
+        <SidebarHeader>
+          <NavBanner />
+        </SidebarHeader>
+        {loggedIn ? (
+          <>
+            <SidebarContent>
+              <NavCommon items={navData.navCore} />
+              <NavChats />
+            </SidebarContent>
+            <SidebarFooter>
+              <Separator />
+              <NavUser user={navData.user} />
+            </SidebarFooter>
+          </>
+        ) : (
+          <>
+            <SidebarContent className="flex flex-col items-center justify-center flex-grow p-4">
+              <NavLoggedOut />
+            </SidebarContent>
+            <SidebarFooter>
+              <Separator className="my-2" />
+              <AuthLoginPopover />
+            </SidebarFooter>
+          </>
+        )}
+        <SidebarRail />
+      </Sidebar>
+    );
+  };
+  
+  

@@ -1,11 +1,41 @@
 # Web
 
-DSQL fills so many gaps that AWS was missing in the "database" space. I firmly believe it will make it challenging for "third-party" providers like Supabase or PlanetScale to keep up.
+The _web_ application supporting [blah.davedennis.dev]. It is a _vite/react_ application running on _AWS S3_ and _AWS CloudFront_.
 
-For me, the biggest issue has always been cost. I build side projects – nothing I create is going to "take off," and I don't need enterprise-level infrastructure. I tinker with projects that are fun to me. I’m not building e-commerce sites or anything similar.
+## Web Specific Learing / @todo
 
-Because of this, I often turned to providers offering a free tier and managing the infrastructure for me. Yes, I know RDS offers ~750 hours of usage, but most people prefer Aurora. Shout out to SST for solving this problem by abstracting away what the customer is getting – because most of the time, they don't care.
+Items related specifically to the _web_ pacakgee that need `@todo`.
 
-Does DynamoDB fit my needs? Sutre, but I may[ end up ] forcing myself to find a NoSQL schema that would fit.
+- [ ] Learn more about `postcss.config.js` file right now it just kind lives in all my projects and I know it's required to use tailwind but _why_ or _what_ this is _really doing_ i'pm just not sure.
+- [ ] Add linting support command can search _turborepo_ exmaples and how they do it? Even though using bun should be similar. Also need to migrate from `.eslint.config.js -> .esling.config.ts`.
 
-Now, DSQL seems to have solved this. I’ve had three Aurora DSQL clusters running for the last three days, and I’m still at a $0 serverless budget (nice, right?). Plus, I can connect to it using Drizzle ORM, spin up a database and schema, and get a connection from Lambda in under 10 minutes.
+  ```typescript
+  import js from "@eslint/js";
+  import globals from "globals";
+  import reactHooks from "eslint-plugin-react-hooks";
+  import reactRefresh from "eslint-plugin-react-refresh";
+  import tseslint from "typescript-eslint";
+
+  export default tseslint.config(
+    { ignores: ["dist"] },
+    {
+      extends: [js.configs.recommended, ...tseslint.configs.recommended],
+      files: ["**/*.{ts,tsx}"],
+      languageOptions: {
+        ecmaVersion: 2020,
+        globals: globals.browser,
+      },
+      plugins: {
+        "react-hooks": reactHooks,
+        "react-refresh": reactRefresh,
+      },
+      rules: {
+        ...reactHooks.configs.recommended.rules,
+        "react-refresh/only-export-components": [
+          "warn",
+          { allowConstantExport: true },
+        ],
+      },
+    },
+  );
+  ```
