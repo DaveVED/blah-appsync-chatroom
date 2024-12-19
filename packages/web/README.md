@@ -8,7 +8,7 @@ Items related specifically to the _web_ pacakgee that need `@todo`.
 
 - [ ] Learn more about `postcss.config.js` file right now it just kind lives in all my projects and I know it's required to use tailwind but _why_ or _what_ this is _really doing_ i'pm just not sure.
 - [ ] Add linting support command can search _turborepo_ exmaples and how they do it? Even though using bun should be similar. Also need to migrate from `.eslint.config.js -> .esling.config.ts`.
-
+- [ ] Auth component.
   ```typescript
   import js from "@eslint/js";
   import globals from "globals";

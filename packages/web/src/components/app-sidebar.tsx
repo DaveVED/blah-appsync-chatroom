@@ -12,7 +12,6 @@ import {
   import { NavUser } from "@/components/nav-user";
   import { Separator } from "@/components/ui/separator";
 import { NavLoggedOut } from "@/components/nav-logged-out";
-import { AuthLoginPopover } from "@/components/auth-login-popover";
   
   const navData = {
     user: {
@@ -64,7 +63,7 @@ import { AuthLoginPopover } from "@/components/auth-login-popover";
             </SidebarContent>
             <SidebarFooter>
               <Separator className="my-2" />
-              <AuthLoginPopover />
+                asdf
             </SidebarFooter>
           </>
         )}
